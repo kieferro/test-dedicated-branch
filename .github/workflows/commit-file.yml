@@ -1,0 +1,19 @@
+name: Commit some file
+
+on:
+  workflow_dispatch
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add file and commit
+        run: |
+          touch emptyFile.json
+          git config --global user.name github-actions
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add emptyFile.json;
+          git commit -m '[Automated action] Added file';
+          git push;
